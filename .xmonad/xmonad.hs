@@ -104,7 +104,7 @@ main = do
         startupHook        = myStartupHook
         } `additionalKeys`
           [ ((mod4Mask,               xK_p     ), spawn "exe=`dmenu_path | dmenu -fn 'xos4 Terminus' -sb '#f07178'` && eval \"exec $exe\"")
-          , ((0,                      xK_Print ), spawn "scrot ss/screen_%Y-%m-%d-%H-%M-%S.png -e 'xclip -selection clipboard -target image/png -i $f'")
-          , ((mod1Mask,               xK_Print ), spawn "scrot ss/window_%Y-%m-%d-%H-%M-%S.png -u -e 'xclip -selection clipboard -target image/png -i $f'")
-          , ((mod4Mask .|. shiftMask, xK_s     ), spawn "sleep 0.2 && scrot ss/selection_%Y-%m-%d-%H-%M-%S.png -a $(slop -f '%x,%y,%w,%h') -e 'xclip -selection clipboard -target image/png -i $f'")
+          , ((0,                      xK_Print ), spawn "scrot ss/screen_%Y-%m-%d-%H-%M-%S.png -q100 -e 'xclip -selection clipboard -target image/png -i $f'")
+          , ((mod1Mask,               xK_Print ), spawn "scrot ss/window_%Y-%m-%d-%H-%M-%S.png -q100 -u -e 'xclip -selection clipboard -target image/png -i $f'")
+          , ((mod4Mask .|. shiftMask, xK_s     ), spawn "sleep 0.2 && scrot ss/selection_%Y-%m-%d-%H-%M-%S.png -q100 -a $(slop -f '%x,%y,%w,%h') -e 'xclip -selection clipboard -target image/png -i $f'")
           ]
