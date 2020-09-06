@@ -75,7 +75,8 @@ myStartupHook = do
 ---
 
 main = do
-    xmproc <- spawnPipe "xmobar -x 0 /home/www/.config/xmobar/xmobarrc"
+    xmproc0 <- spawnPipe "xmobar -x 0 /home/www/.config/xmobar/xmobarrc"
+    --xmproc1 <- spawnPipe "xmobar -x 1 /home/www/.config/xmobar/xmobarrc"
 
     xmonad $ docks $ defaultConfig
         { manageHook       = manageDocks <+> manageHook defaultConfig <+> myManageHook,
@@ -88,7 +89,7 @@ main = do
         focusedBorderColor = myFocusedBorderColor,
         layoutHook         = myLayout,
         logHook            = dynamicLogWithPP xmobarPP
-                               { ppOutput = hPutStrLn xmproc 
+                               { ppOutput = hPutStrLn xmproc0
                                , ppCurrent = xmobarColor "#FF5555" "" . wrap "[ " " ]" -- Current workspace in xmobar
                                , ppVisible = xmobarColor "#b3afc2" ""                -- Visible but not current workspace
                                , ppHidden = xmobarColor "#f07178" "" . wrap "*" ""   -- Hidden workspaces in xmobar
