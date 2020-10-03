@@ -4,7 +4,6 @@ import qualified XMonad.StackSet as W
 
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.ManageDocks
 import XMonad.Layout.Spacing
 import XMonad.Layout.NoBorders
 import XMonad.Util.Run(spawnPipe)
@@ -15,7 +14,7 @@ import System.IO
 import Data.Monoid
 
 myTerminal           = "alacritty"
-myBorderWidth        = 5 
+myBorderWidth        = 5
 myNormalBorderColor  = "#1E1E1E"
 myFocusedBorderColor = "#AAAAAA"
 
@@ -50,10 +49,10 @@ xmobarEscape = concatMap doubleLts
         doubleLts x   = [x]
 
 myWorkspaces :: [String]
-myWorkspaces = clickable . (map xmobarEscape)
+myWorkspaces = clickable . map xmobarEscape
                $ ["dev", "www", "chat", "game", "music", "misc"]
     where
-        clickable l = [ "<action=xdotool key super+" ++ show (n) ++ ">" ++ ws ++ "</action>" |
+        clickable l = [ "<action=xdotool key super+" ++ show n ++ ">" ++ ws ++ "</action>" |
                       (i,ws) <- zip [1..9] l,
                       let n = i ]
 
