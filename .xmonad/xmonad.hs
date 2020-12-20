@@ -69,8 +69,9 @@ myManageHook = composeAll
 --
 
 myStartupHook = do
-    spawnOnce "nitrogen --restore &"
-    spawnOnce "picom &"
+    spawnOnce "nitrogen --restore"
+    spawnOnce "picom"
+    spawnOnce "unclutter"
 ---
 
 main = do
